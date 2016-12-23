@@ -24,7 +24,7 @@ namespace AAEergasia2 {
         }
 
         private void startNewGame() {
-            game = new Mem(4, 6);
+            game = new Mem(2, 2);//(4,6)
             game.clickHandlers = new WrongClickHandler(wrongClick);
             game.winHandlers = new WinHandler(gameWon);
             foreach (var i in game.pics) { GamePanel.Controls.Add(i); }
@@ -35,7 +35,7 @@ namespace AAEergasia2 {
         private void gameWon()
         {
             //MessageBox.Show("You won!");
-            HighscoresForm f = new HighscoresForm(hs, clicks);
+            HighscoresForm f = new HighscoresForm(hs, clicks, seconds);
             f.Show();
             timer.Stop();
         }

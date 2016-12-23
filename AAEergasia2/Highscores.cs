@@ -9,29 +9,39 @@ namespace AAEergasia2 {
 
     public class Highscores {
         private SQLiteConnection con;
+        private string filename = "..\\..\\Externals\\Highscores.sqldb";
         public Highscores() {
-            if (!System.IO.File.Exists("Highscores.sql")) {
-                SQLiteConnection.CreateFile("MyDatabase.sqlite");
+            if (!System.IO.File.Exists(filename)) {
+                SQLiteConnection.CreateFile(filename);
             }
-            con = new SQLiteConnection("Data Source=Highscores.sql;Version=3;");
+            con = new SQLiteConnection("Data Source=" + filename + ";Version=3;");
             con.Open();
-            string sql = "CREATE TABLE IF NOT EXISTS highscores (name VARCHAR(30), score INT)";
+            string sql = "CREATE TABLE IF NOT EXISTS highscores (name VARCHAR(30), score INT, time INT)";
             SQLiteCommand command = new SQLiteCommand(sql, con);
             command.ExecuteNonQuery();
         }
 
-        public void InsertScore(string name, int score) {
-            string sql = "INSERT INTO highscores (name, score) VALUES ('" + name + "'," + score + ")";
+        public void InsertScore(string name, int score, int seconds) {
+            string sql = "INSERT INTO highscores (name, score, time) VALUES ('" + name + "'," + score + "," + seconds + ")";
             SQLiteCommand command = new SQLiteCommand(sql, con);
             command.ExecuteNonQuery();
         }
         
 
-        public SQLiteDataReader GetTopScores() {
-            string sql = "SELECT * FROM highscores ORDER BY score ASC";
+        public SQLiteDataReader GetTopOrder(string order="score") {
+            string sql = "SELECT * FROM highscores ORDER BY "+ order +" ASC";
             SQLiteCommand command = new SQLiteCommand(sql, con);
             SQLiteDataReader reader = command.ExecuteReader();
             return reader;
+        }
+
+        public SQLiteDataReader GetTopScores() {
+            return GetTopOrder("score");
+
+        }
+
+        public SQLiteDataReader GetTopTimes() {
+            return GetTopOrder("time");
         }
 
         public void Close() {
