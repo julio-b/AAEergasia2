@@ -67,6 +67,7 @@
             this.Controls.Add(this.GamePanel);
             this.MinimumSize = new System.Drawing.Size(500, 450);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.ResumeLayout(false);
