@@ -19,7 +19,7 @@ namespace AAEergasia2 {
         }
 
         private void startNewGame() {
-            game = new Mem(4, 4);
+            game = new Mem(4, 6);
             foreach (var i in game.pics) { GamePanel.Controls.Add(i); }
             PerformLayout();
             game.updatePositions();

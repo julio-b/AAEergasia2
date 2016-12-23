@@ -113,12 +113,19 @@ namespace AAEergasia2 {
                 previous = current;
                 return;
             }
-            MessageBox.Show(previous.Equals(current).ToString());
+            //MessageBox.Show(previous.Equals(current).ToString());
             if (!previous.Equals(current)) {
                 delay.Tag = new Pic[] { previous, current };
                 waiting = true;
                 delay.Start();
             } else {
+                current.MouseClick -= imageClick;
+                current.MouseEnter -= mouseEnter;
+                current.MouseLeave -= mouseLeave;
+                mouseLeave(current, null);
+                previous.MouseClick -= imageClick;
+                previous.MouseEnter -= mouseEnter;
+                previous.MouseLeave -= mouseLeave;
                 if (checkWinner()) { MessageBox.Show("You Won!"); }
             }
             previous = null;
