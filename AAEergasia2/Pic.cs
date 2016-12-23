@@ -7,6 +7,8 @@ using System.Drawing;
 using System.Windows.Forms;
 
 namespace AAEergasia2 {
+    public delegate void WrongClickHandler();
+    public delegate void WinHandler();
 
     class Pic: PictureBox {
         Bitmap topImage = new Bitmap(@"..\..\jinx\top.jpg");
@@ -32,16 +34,16 @@ namespace AAEergasia2 {
 
 
     class Mem {
+        public WrongClickHandler clickHandlers;
+        public WinHandler winHandlers;
         public Pic[,] pics;
         public Pic previous = null;
 
         private Timer delay;
         bool waiting = false;
-
         int scaleX, scaleY;
 
         public Mem(int N, int M) {
-
             pics = new Pic[N,M] ;
             delay = new Timer();
 
@@ -113,11 +115,12 @@ namespace AAEergasia2 {
                 previous = current;
                 return;
             }
-            //MessageBox.Show(previous.Equals(current).ToString());
             if (!previous.Equals(current)) {
                 delay.Tag = new Pic[] { previous, current };
                 waiting = true;
                 delay.Start();
+                if (clickHandlers != null)
+                    clickHandlers(); //fire up events
             } else {
                 current.MouseClick -= imageClick;
                 current.MouseEnter -= mouseEnter;
@@ -126,7 +129,8 @@ namespace AAEergasia2 {
                 previous.MouseClick -= imageClick;
                 previous.MouseEnter -= mouseEnter;
                 previous.MouseLeave -= mouseLeave;
-                if (checkWinner()) { MessageBox.Show("You Won!"); }
+                if (checkWinner() && winHandlers != null)
+                    winHandlers(); //fire up events
             }
             previous = null;
         }
