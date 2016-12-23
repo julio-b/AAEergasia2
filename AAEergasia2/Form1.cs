@@ -12,11 +12,13 @@ namespace AAEergasia2 {
 
     public partial class Form1 : Form {
         private Mem game;
+        private Highscores hs;
         int clicks;
         int seconds;
 
         public Form1() {
             InitializeComponent();
+            hs = new Highscores();
             startNewGame();
             timer.Start();
         }
@@ -32,7 +34,10 @@ namespace AAEergasia2 {
 
         private void gameWon()
         {
-            MessageBox.Show("You won!");
+            //MessageBox.Show("You won!");
+            HighscoresForm f = new HighscoresForm(hs, clicks);
+            f.Show();
+            timer.Stop();
         }
 
         private void wrongClick()
@@ -49,6 +54,10 @@ namespace AAEergasia2 {
         {
             seconds += timer.Interval/1000;
             LTime.Text = String.Format(@"{0:D2}:{1:D2}", seconds/60, seconds%60);
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
+            hs.Close();
         }
     }
 

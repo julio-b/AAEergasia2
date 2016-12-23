@@ -27,11 +27,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.GamePanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.LTime = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.LClicks = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -42,7 +42,7 @@
             this.GamePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.GamePanel.BackColor = System.Drawing.Color.Khaki;
+            this.GamePanel.BackColor = System.Drawing.Color.Transparent;
             this.GamePanel.Location = new System.Drawing.Point(12, 97);
             this.GamePanel.Name = "GamePanel";
             this.GamePanel.Size = new System.Drawing.Size(667, 463);
@@ -59,6 +59,26 @@
             this.panel1.Size = new System.Drawing.Size(128, 59);
             this.panel1.TabIndex = 1;
             // 
+            // LTime
+            // 
+            this.LTime.AutoSize = true;
+            this.LTime.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.LTime.Location = new System.Drawing.Point(33, 28);
+            this.LTime.Name = "LTime";
+            this.LTime.Size = new System.Drawing.Size(65, 28);
+            this.LTime.TabIndex = 1;
+            this.LTime.Text = "00:00";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.label1.Location = new System.Drawing.Point(33, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 28);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Time";
+            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -71,15 +91,15 @@
             this.panel2.Size = new System.Drawing.Size(128, 59);
             this.panel2.TabIndex = 2;
             // 
-            // label1
+            // LClicks
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.label1.Location = new System.Drawing.Point(33, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 28);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Time";
+            this.LClicks.AutoSize = true;
+            this.LClicks.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.LClicks.Location = new System.Drawing.Point(52, 27);
+            this.LClicks.Name = "LClicks";
+            this.LClicks.Size = new System.Drawing.Size(24, 28);
+            this.LClicks.TabIndex = 2;
+            this.LClicks.Text = "0";
             // 
             // label2
             // 
@@ -90,26 +110,6 @@
             this.label2.Size = new System.Drawing.Size(57, 28);
             this.label2.TabIndex = 1;
             this.label2.Text = "Clicks";
-            // 
-            // LTime
-            // 
-            this.LTime.AutoSize = true;
-            this.LTime.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.LTime.Location = new System.Drawing.Point(33, 28);
-            this.LTime.Name = "LTime";
-            this.LTime.Size = new System.Drawing.Size(65, 28);
-            this.LTime.TabIndex = 1;
-            this.LTime.Text = "00:00";
-            // 
-            // LClicks
-            // 
-            this.LClicks.AutoSize = true;
-            this.LClicks.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.LClicks.Location = new System.Drawing.Point(52, 27);
-            this.LClicks.Name = "LClicks";
-            this.LClicks.Size = new System.Drawing.Size(24, 28);
-            this.LClicks.TabIndex = 2;
-            this.LClicks.Text = "0";
             // 
             // timer
             // 
@@ -131,6 +131,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Memory Game";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
