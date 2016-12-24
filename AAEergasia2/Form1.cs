@@ -23,7 +23,7 @@ namespace AAEergasia2 {
         }
 
         private void startNewGame() {
-            game = new Mem(2, 2);//(4,6)
+            game = new Mem(4, 6);//(4,6)// check if (N*M)%2==0
             game.clickHandlers = new WrongClickHandler(wrongClick);
             game.winHandlers = new WinHandler(gameWon);
             foreach (var i in game.pics)
@@ -79,6 +79,11 @@ namespace AAEergasia2 {
             Application.Exit();
         }
 
+        private void loadPicturesToolStripMenuItem_Click(object sender, EventArgs e) {
+            openFileDialog1.ShowDialog();
+            game.loadImages(openFileDialog1.FileNames);
+            resetToolStripMenuItem_Click(null, null);
+        }
     }
 
 

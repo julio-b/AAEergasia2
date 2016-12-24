@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -16,7 +17,7 @@ namespace AAEergasia2 {
         public Pic() : base() {
             BackColor = Color.Black;
             BackgroundImageLayout = ImageLayout.Stretch; //kanei thn eikona na einai oso einai to picturebox
-            SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            SizeMode = PictureBoxSizeMode.StretchImage;
             Image = topImage;
             Cursor = Cursors.Hand;
         }
@@ -50,21 +51,36 @@ namespace AAEergasia2 {
             delay.Interval = 1000;//1s
             delay.Tick += new EventHandler(closeDelay);
 
-            //load images
-            List<Bitmap> img = new List<Bitmap>();
-            for (int i = 0; i < N*M; i+=2) {
-                Bitmap bmp = new Bitmap(@"..\..\jinx\" + i / 2 + ".png");
-                img.Add(bmp);
-                img.Add(bmp);
-            }
-
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < M; j++) {
                     pics[i, j] = new Pic();
-                    pics[i, j].BackgroundImage = img[ i*M + j ];
                 }
             }
-           
+            loadImages();
+        }
+
+        public void loadImages(string[] filenames=null) {
+            int N = pics.GetLength(0);
+            int M = pics.GetLength(1);
+            List<Bitmap> img = new List<Bitmap>();
+            int c = 0;
+            if (filenames != null) foreach (string f in filenames) {
+                    Bitmap bmp = new Bitmap(@f);
+                    img.Add(bmp);
+                    img.Add(bmp);
+                    c += 2;
+
+            }
+            for (; c < N * M; c += 2) {
+                Bitmap bmp = new Bitmap(@"..\..\jinx\" + c / 2 + ".png");
+                img.Add(bmp);
+                img.Add(bmp);
+            }
+            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < M; j++) {
+                    pics[i, j].BackgroundImage = img[i * M + j];
+                }
+            }
         }
 
         public void reset()
@@ -72,6 +88,10 @@ namespace AAEergasia2 {
             foreach (Pic p in pics)
             {
                 p.Close();
+                p.MouseClick -= imageClick;
+                p.MouseEnter -= mouseEnter;
+                p.MouseLeave -= mouseLeave;
+                ///^^^delete all handlers
                 p.MouseClick += new MouseEventHandler(imageClick);
                 p.MouseEnter += new EventHandler(mouseEnter);
                 p.MouseLeave += new EventHandler(mouseLeave);
@@ -87,6 +107,7 @@ namespace AAEergasia2 {
                 pics[i / M, i % M] = pics[j / M, j % M];
                 pics[j / M, j % M] = temp;
             }
+            previous = null;
             updatePositions();
         }
 
@@ -100,7 +121,7 @@ namespace AAEergasia2 {
 
             for (int i = 0; i < _N; i++) {
                 for (int j = 0; j < _M; j++) {
-                    pics[i, j].Size = new System.Drawing.Size(picW, picH);
+                    pics[i, j].Size = new Size(picW, picH);
                     pics[i, j].Top = i * picH;
                     pics[i, j].Left = j * picW;
                 }
