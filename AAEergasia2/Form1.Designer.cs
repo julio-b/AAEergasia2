@@ -33,8 +33,13 @@
             this.LClicks = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.highscoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.choosePicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // GamePanel
@@ -116,6 +121,38 @@
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(691, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // menuToolStripMenuItem
+            // 
+            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.highscoresToolStripMenuItem,
+            this.choosePicsToolStripMenuItem});
+            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.menuToolStripMenuItem.Text = "Menu";
+            // 
+            // highscoresToolStripMenuItem
+            // 
+            this.highscoresToolStripMenuItem.Name = "highscoresToolStripMenuItem";
+            this.highscoresToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.highscoresToolStripMenuItem.Text = "Highscores";
+            this.highscoresToolStripMenuItem.Click += new System.EventHandler(this.highscoresToolStripMenuItem_Click);
+            // 
+            // choosePicsToolStripMenuItem
+            // 
+            this.choosePicsToolStripMenuItem.Name = "choosePicsToolStripMenuItem";
+            this.choosePicsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.choosePicsToolStripMenuItem.Text = "Choose Pics";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -126,7 +163,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.GamePanel);
+            this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
+            this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(500, 450);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -137,7 +176,10 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -151,6 +193,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label LClicks;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem highscoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem choosePicsToolStripMenuItem;
     }
 }
 

@@ -13,6 +13,7 @@ namespace AAEergasia2 {
     public partial class Form1 : Form {
         private Mem game;
         private Highscores hs;
+        HighscoresForm f;
         int clicks;
         int seconds;
 
@@ -35,7 +36,8 @@ namespace AAEergasia2 {
         private void gameWon()
         {
             //MessageBox.Show("You won!");
-            HighscoresForm f = new HighscoresForm(hs, clicks, seconds);
+            if (f != null) f.Close();
+            f = new HighscoresForm(hs, clicks, seconds);
             f.Show();
             timer.Stop();
         }
@@ -58,6 +60,12 @@ namespace AAEergasia2 {
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
             hs.Close();
+        }
+
+        private void highscoresToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (f != null) f.Close();
+            f = new HighscoresForm(hs);
+            f.Show();
         }
     }
 

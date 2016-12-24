@@ -10,7 +10,24 @@ namespace AAEergasia2 {
     public class Highscores {
         private SQLiteConnection con;
         private string filename = "..\\..\\Externals\\Highscores.sqldb";
+
         public Highscores() {
+            NewCon();
+        }
+
+        public void InsertScore(string name, int score, int seconds) {
+            string sql = "INSERT INTO highscores (name, score, time) VALUES ('" + name + "'," + score + "," + seconds + ")";
+            SQLiteCommand command = new SQLiteCommand(sql, con);
+            command.ExecuteNonQuery();
+        }
+
+        public void ClearDb() {
+            con.Close();
+            if (System.IO.File.Exists(filename)) System.IO.File.Delete(filename);
+            NewCon();
+        }
+
+        private void NewCon() {
             if (!System.IO.File.Exists(filename)) {
                 SQLiteConnection.CreateFile(filename);
             }
@@ -20,13 +37,6 @@ namespace AAEergasia2 {
             SQLiteCommand command = new SQLiteCommand(sql, con);
             command.ExecuteNonQuery();
         }
-
-        public void InsertScore(string name, int score, int seconds) {
-            string sql = "INSERT INTO highscores (name, score, time) VALUES ('" + name + "'," + score + "," + seconds + ")";
-            SQLiteCommand command = new SQLiteCommand(sql, con);
-            command.ExecuteNonQuery();
-        }
-        
 
         public SQLiteDataReader GetTopOrder(string order="score") {
             string sql = "SELECT * FROM highscores ORDER BY "+ order +" ASC";
