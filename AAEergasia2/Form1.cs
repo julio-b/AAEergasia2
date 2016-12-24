@@ -12,14 +12,12 @@ namespace AAEergasia2 {
 
     public partial class Form1 : Form {
         private Mem game;
-        private Highscores hs;
         HighscoresForm f;
         int clicks;
         int seconds;
 
         public Form1() {
             InitializeComponent();
-            hs = new Highscores();
             startNewGame();
             timer.Start();
         }
@@ -28,16 +26,17 @@ namespace AAEergasia2 {
             game = new Mem(2, 2);//(4,6)
             game.clickHandlers = new WrongClickHandler(wrongClick);
             game.winHandlers = new WinHandler(gameWon);
-            foreach (var i in game.pics) { GamePanel.Controls.Add(i); }
+            foreach (var i in game.pics)
+                GamePanel.Controls.Add(i);
+            game.reset();
             PerformLayout();
             game.updatePositions();
         }
 
         private void gameWon()
         {
-            //MessageBox.Show("You won!");
             if (f != null) f.Close();
-            f = new HighscoresForm(hs, clicks, seconds);
+            f = new HighscoresForm(clicks, seconds);
             f.Show();
             timer.Stop();
         }
@@ -58,15 +57,28 @@ namespace AAEergasia2 {
             LTime.Text = String.Format(@"{0:D2}:{1:D2}", seconds/60, seconds%60);
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
-            hs.Close();
-        }
-
         private void highscoresToolStripMenuItem_Click(object sender, EventArgs e) {
             if (f != null) f.Close();
-            f = new HighscoresForm(hs);
+            f = new HighscoresForm();
             f.Show();
         }
+
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            game.reset();
+            clicks = 0;
+            seconds = 0;
+            LClicks.Text = "0";
+            LTime.Text = "00:00";
+            timer.Start();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            Application.Exit();
+        }
+
     }
 
 

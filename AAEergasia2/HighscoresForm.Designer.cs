@@ -23,43 +23,37 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.topTenRichTxt = new System.Windows.Forms.RichTextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.insertScoreBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this._name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._score = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reset = new System.Windows.Forms.Button();
+            this.refresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // topTenRichTxt
-            // 
-            this.topTenRichTxt.Location = new System.Drawing.Point(13, 339);
-            this.topTenRichTxt.Name = "topTenRichTxt";
-            this.topTenRichTxt.Size = new System.Drawing.Size(349, 114);
-            this.topTenRichTxt.TabIndex = 0;
-            this.topTenRichTxt.Text = "";
-            // 
             // nameTextBox
             // 
+            this.nameTextBox.Enabled = false;
+            this.nameTextBox.ForeColor = System.Drawing.Color.DarkGray;
             this.nameTextBox.Location = new System.Drawing.Point(13, 13);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(153, 20);
             this.nameTextBox.TabIndex = 1;
             this.nameTextBox.Text = "<Your Name>";
-            this.nameTextBox.Visible = false;
+            this.nameTextBox.Enter += new System.EventHandler(this.nameTextBox_Enter);
+            this.nameTextBox.Leave += new System.EventHandler(this.nameTextBox_Leave);
             // 
             // insertScoreBtn
             // 
+            this.insertScoreBtn.Enabled = false;
             this.insertScoreBtn.Location = new System.Drawing.Point(172, 10);
             this.insertScoreBtn.Name = "insertScoreBtn";
             this.insertScoreBtn.Size = new System.Drawing.Size(75, 23);
             this.insertScoreBtn.TabIndex = 2;
             this.insertScoreBtn.Text = "Save";
             this.insertScoreBtn.UseVisualStyleBackColor = true;
-            this.insertScoreBtn.Visible = false;
             this.insertScoreBtn.Click += new System.EventHandler(this.insertScoreBtn_Click);
             // 
             // dataGridView1
@@ -67,6 +61,10 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -74,8 +72,7 @@
             this._name,
             this._score,
             this._time});
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 39);
+            this.dataGridView1.Location = new System.Drawing.Point(13, 40);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(349, 294);
@@ -99,28 +96,32 @@
             this._time.Name = "_time";
             this._time.ReadOnly = true;
             // 
-            // reset
+            // refresh
             // 
-            this.reset.Location = new System.Drawing.Point(253, 11);
-            this.reset.Name = "reset";
-            this.reset.Size = new System.Drawing.Size(75, 23);
-            this.reset.TabIndex = 4;
-            this.reset.Text = "ClearDB";
-            this.reset.UseVisualStyleBackColor = true;
-            this.reset.Click += new System.EventHandler(this.reset_Click);
+            this.refresh.Location = new System.Drawing.Point(253, 11);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(75, 23);
+            this.refresh.TabIndex = 4;
+            this.refresh.Text = "Refresh";
+            this.refresh.UseVisualStyleBackColor = true;
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
             // 
             // HighscoresForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 465);
-            this.Controls.Add(this.reset);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.ClientSize = new System.Drawing.Size(373, 343);
+            this.Controls.Add(this.refresh);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.insertScoreBtn);
             this.Controls.Add(this.nameTextBox);
-            this.Controls.Add(this.topTenRichTxt);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "HighscoresForm";
-            this.Text = "HighscoresForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Highscores";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HighscoresForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -128,14 +129,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.RichTextBox topTenRichTxt;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Button insertScoreBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn _name;
         private System.Windows.Forms.DataGridViewTextBoxColumn _score;
         private System.Windows.Forms.DataGridViewTextBoxColumn _time;
-        private System.Windows.Forms.Button reset;
+        private System.Windows.Forms.Button refresh;
     }
 }

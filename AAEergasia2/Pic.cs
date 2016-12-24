@@ -57,25 +57,37 @@ namespace AAEergasia2 {
                 img.Add(bmp);
                 img.Add(bmp);
             }
-            
-            //shuffle img
-            Random r = new Random();
-            for (int i = 0 ; i < img.Count; i++) {
-                int j = r.Next(i, img.Count);
-                var t = img[i];
-                img[i] = img[j];
-                img[j] = t;
-            }
 
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < M; j++) {
                     pics[i, j] = new Pic();
                     pics[i, j].BackgroundImage = img[ i*M + j ];
-                    pics[i, j].MouseClick += new MouseEventHandler(imageClick);
-                    pics[i, j].MouseEnter += new EventHandler(mouseEnter);
-                    pics[i, j].MouseLeave += new EventHandler(mouseLeave);
                 }
             }
+           
+        }
+
+        public void reset()
+        {
+            foreach (Pic p in pics)
+            {
+                p.Close();
+                p.MouseClick += new MouseEventHandler(imageClick);
+                p.MouseEnter += new EventHandler(mouseEnter);
+                p.MouseLeave += new EventHandler(mouseLeave);
+            }
+            //shuffle pics[,]
+            int N = pics.GetLength(0);
+            int M = pics.GetLength(1);
+            Random r = new Random();
+            for (int i = 0; i < N * M; i++)
+            {
+                int j = r.Next(i, N * M);
+                Pic temp = pics[i / M, i % M];
+                pics[i / M, i % M] = pics[j / M, j % M];
+                pics[j / M, j % M] = temp;
+            }
+            updatePositions();
         }
 
         public void updatePositions() {
@@ -148,6 +160,7 @@ namespace AAEergasia2 {
             Pic pic = (Pic)sender;
             pic.Width += scaleX;
             pic.Height += scaleY;
+            pic.BringToFront(); //panw apo ta diplana tou
         }
 
         private void mouseLeave(object sender, EventArgs e)
@@ -155,6 +168,7 @@ namespace AAEergasia2 {
             Pic pic = (Pic)sender;
             pic.Width -= scaleX;
             pic.Height -= scaleY;
+            
         }
 
     }
