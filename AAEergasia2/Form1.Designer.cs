@@ -180,7 +180,7 @@
             // loadPicturesToolStripMenuItem
             // 
             this.loadPicturesToolStripMenuItem.Name = "loadPicturesToolStripMenuItem";
-            this.loadPicturesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadPicturesToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.loadPicturesToolStripMenuItem.Text = "Load Pictures";
             this.loadPicturesToolStripMenuItem.Click += new System.EventHandler(this.loadPicturesToolStripMenuItem_Click);
             // 
@@ -189,14 +189,15 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "PNG files|*.png|JPG files|*.jpg|All file|*.*";
+            this.openFileDialog1.Filter = "PNG files|*.png|JPG files|*.jpg";
             this.openFileDialog1.Multiselect = true;
             this.openFileDialog1.ReadOnlyChecked = true;
             this.openFileDialog1.SupportMultiDottedExtensions = true;
+            this.openFileDialog1.Title = "Load Pictures";
             // 
             // Form1
             // 

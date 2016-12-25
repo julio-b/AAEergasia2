@@ -11,6 +11,9 @@ using System.Windows.Forms;
 namespace AAEergasia2 {
 
     public partial class Form1 : Form {
+        private const int N = 4;
+        private const int M = 6;
+
         private Mem game;
         HighscoresForm f;
         int clicks;
@@ -23,7 +26,7 @@ namespace AAEergasia2 {
         }
 
         private void startNewGame() {
-            game = new Mem(4, 6);//(4,6)// check if (N*M)%2==0
+            game = new Mem(N, M);// check if (N*M)%2==0
             game.clickHandlers = new WrongClickHandler(wrongClick);
             game.winHandlers = new WinHandler(gameWon);
             foreach (var i in game.pics)
@@ -80,9 +83,28 @@ namespace AAEergasia2 {
         }
 
         private void loadPicturesToolStripMenuItem_Click(object sender, EventArgs e) {
-            openFileDialog1.ShowDialog();
-            game.loadImages(openFileDialog1.FileNames);
-            resetToolStripMenuItem_Click(null, null);
+            openFileDialog1.Title = "Select " + (N * M / 2) + " pictures";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if(openFileDialog1.FileNames.Length < N * M / 2)
+                {
+                    MessageBox.Show("Please give "+(N*M/2)+" pictures or more.", "Warning");
+                }
+                else
+                {
+                    game.loadImages(openFileDialog1.FileNames);
+                    resetToolStripMenuItem_Click(null, null);
+                }
+            }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string about = "Created by:\n";
+            about += "\tΓιώργος\n";
+            about += "\tΘεοφάνης\n";
+            about += "\tΤζούλιο\n";
+            MessageBox.Show(about, "About");
         }
     }
 

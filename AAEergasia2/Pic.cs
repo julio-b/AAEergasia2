@@ -56,26 +56,26 @@ namespace AAEergasia2 {
                     pics[i, j] = new Pic();
                 }
             }
-            loadImages();
+            //default images
+            string[] filenames = new string[N * M / 2];
+            for(int i = 0;i < filenames.Length; i++)
+            {
+                filenames[i] = @"..\..\jinx\"+i+".png";
+            }
+            loadImages(filenames);
         }
 
-        public void loadImages(string[] filenames=null) {
+        public void loadImages(string[] filenames) {
             int N = pics.GetLength(0);
             int M = pics.GetLength(1);
             List<Bitmap> img = new List<Bitmap>();
-            int c = 0;
-            if (filenames != null) foreach (string f in filenames) {
+            foreach (string f in filenames)
+            {
                     Bitmap bmp = new Bitmap(@f);
                     img.Add(bmp);
                     img.Add(bmp);
-                    c += 2;
+            }
 
-            }
-            for (; c < N * M; c += 2) {
-                Bitmap bmp = new Bitmap(@"..\..\jinx\" + c / 2 + ".png");
-                img.Add(bmp);
-                img.Add(bmp);
-            }
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < M; j++) {
                     pics[i, j].BackgroundImage = img[i * M + j];
