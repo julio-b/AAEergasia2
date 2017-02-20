@@ -42,6 +42,7 @@
             this.loadPicturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -105,7 +106,7 @@
             // 
             this.LClicks.AutoSize = true;
             this.LClicks.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.LClicks.Location = new System.Drawing.Point(52, 27);
+            this.LClicks.Location = new System.Drawing.Point(52, 28);
             this.LClicks.Name = "LClicks";
             this.LClicks.Size = new System.Drawing.Size(24, 28);
             this.LClicks.TabIndex = 2;
@@ -124,6 +125,7 @@
             // timer
             // 
             this.timer.Interval = 1000;
+            this.timer.Tag = "";
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // menuStrip1
@@ -199,6 +201,17 @@
             this.openFileDialog1.SupportMultiDottedExtensions = true;
             this.openFileDialog1.Title = "Load Pictures";
             // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(206, 63);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(263, 26);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Click below to start a new game!";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,6 +219,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(691, 572);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.GamePanel);
@@ -215,6 +229,7 @@
             this.MinimumSize = new System.Drawing.Size(500, 450);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Tag = "";
             this.Text = "Memory Game";
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.panel1.ResumeLayout(false);
@@ -247,6 +262,7 @@
         private System.Windows.Forms.ToolStripMenuItem loadPicturesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label label3;
     }
 }
 

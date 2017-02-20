@@ -22,11 +22,10 @@ namespace AAEergasia2 {
         public Form1() {
             InitializeComponent();
             startNewGame();
-            timer.Start();
         }
 
         private void startNewGame() {
-            game = new Mem(N, M);// check if (N*M)%2==0
+            game = new Mem(N, M, new MouseEventHandler(startT));// check if (N*M)%2==0
             game.clickHandlers = new WrongClickHandler(wrongClick);
             game.winHandlers = new WinHandler(gameWon);
             foreach (var i in game.pics)
@@ -34,6 +33,7 @@ namespace AAEergasia2 {
             game.reset();
             PerformLayout();
             game.updatePositions();
+            timer.Tag = false;
         }
 
         private void gameWon()
@@ -42,6 +42,8 @@ namespace AAEergasia2 {
             f = new HighscoresForm(clicks, seconds);
             f.Show();
             timer.Stop();
+            timer.Tag = true;
+            label3.Visible = true;
         }
 
         private void wrongClick()
@@ -73,7 +75,7 @@ namespace AAEergasia2 {
             seconds = 0;
             LClicks.Text = "0";
             LTime.Text = "00:00";
-            timer.Start();
+            timer.Tag = false;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -105,6 +107,12 @@ namespace AAEergasia2 {
             about += "\tΘεοφάνης\n";
             about += "\tΤζούλιο\n";
             MessageBox.Show(about, "About");
+        }
+
+        private void startT(object sender, MouseEventArgs e) {
+            if ((bool)timer.Tag == true) { resetToolStripMenuItem_Click(null, null); return; }
+            if (label3.Visible == true)  label3.Visible = false; 
+            if (!timer.Enabled)  timer.Start(); 
         }
     }
 

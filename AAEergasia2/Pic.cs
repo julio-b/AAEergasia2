@@ -40,11 +40,12 @@ namespace AAEergasia2 {
         public Pic[,] pics;
         public Pic previous = null;
 
+        private Size picSize;
         private Timer delay;
         bool waiting = false;
         int scaleX, scaleY;
 
-        public Mem(int N, int M) {
+        public Mem(int N, int M, MouseEventHandler t) {
             pics = new Pic[N,M] ;
             delay = new Timer();
 
@@ -54,6 +55,7 @@ namespace AAEergasia2 {
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < M; j++) {
                     pics[i, j] = new Pic();
+                    pics[i, j].MouseClick += t;
                 }
             }
             //default images
@@ -116,19 +118,18 @@ namespace AAEergasia2 {
             int _N = pics.GetLength(0);
             int _M = pics.GetLength(1);
 
-            int picW = panelSize.Width / _M;
-            int picH = panelSize.Height / _N;
+            picSize = new Size(panelSize.Width / _M,  panelSize.Height / _N);
 
             for (int i = 0; i < _N; i++) {
                 for (int j = 0; j < _M; j++) {
-                    pics[i, j].Size = new Size(picW, picH);
-                    pics[i, j].Top = i * picH;
-                    pics[i, j].Left = j * picW;
+                    pics[i, j].Size = picSize;
+                    pics[i, j].Top = i * picSize.Height;
+                    pics[i, j].Left = j * picSize.Width;
                 }
             }
 
-            scaleX = pics[0, 0].Width / 10;
-            scaleY = pics[0, 0].Height / 10;
+            scaleX = picSize.Width / 10;
+            scaleY = picSize.Height / 10;
         }
 
         public bool checkWinner() {
@@ -187,9 +188,7 @@ namespace AAEergasia2 {
         private void mouseLeave(object sender, EventArgs e)
         {
             Pic pic = (Pic)sender;
-            pic.Width -= scaleX;
-            pic.Height -= scaleY;
-            
+            pic.Size = picSize;
         }
 
     }
