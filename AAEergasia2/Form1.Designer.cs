@@ -53,19 +53,21 @@
             this.GamePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.GamePanel.BackColor = System.Drawing.Color.Transparent;
-            this.GamePanel.Location = new System.Drawing.Point(12, 97);
+            this.GamePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(59)))), ((int)(((byte)(2)))));
+            this.GamePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.GamePanel.Location = new System.Drawing.Point(24, 109);
+            this.GamePanel.Margin = new System.Windows.Forms.Padding(15);
             this.GamePanel.Name = "GamePanel";
-            this.GamePanel.Size = new System.Drawing.Size(667, 463);
+            this.GamePanel.Size = new System.Drawing.Size(787, 528);
             this.GamePanel.TabIndex = 0;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Khaki;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(59)))), ((int)(((byte)(2)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.LTime);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 32);
+            this.panel1.Location = new System.Drawing.Point(24, 32);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(128, 59);
             this.panel1.TabIndex = 1;
@@ -74,6 +76,7 @@
             // 
             this.LTime.AutoSize = true;
             this.LTime.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.LTime.ForeColor = System.Drawing.Color.White;
             this.LTime.Location = new System.Drawing.Point(33, 28);
             this.LTime.Name = "LTime";
             this.LTime.Size = new System.Drawing.Size(65, 28);
@@ -84,6 +87,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(33, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 28);
@@ -93,11 +97,11 @@
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.Khaki;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(59)))), ((int)(((byte)(2)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.LClicks);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(551, 32);
+            this.panel2.Location = new System.Drawing.Point(683, 32);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(128, 59);
             this.panel2.TabIndex = 2;
@@ -106,6 +110,7 @@
             // 
             this.LClicks.AutoSize = true;
             this.LClicks.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.LClicks.ForeColor = System.Drawing.Color.White;
             this.LClicks.Location = new System.Drawing.Point(52, 28);
             this.LClicks.Name = "LClicks";
             this.LClicks.Size = new System.Drawing.Size(24, 28);
@@ -116,6 +121,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(36, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 28);
@@ -136,7 +142,7 @@
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(691, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(835, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -205,8 +211,10 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(59)))), ((int)(((byte)(2)))));
             this.label3.Font = new System.Drawing.Font("Segoe Print", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(206, 63);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(286, 63);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(263, 26);
             this.label3.TabIndex = 4;
@@ -217,8 +225,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(691, 572);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(835, 661);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

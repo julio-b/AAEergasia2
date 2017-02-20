@@ -12,7 +12,7 @@ namespace AAEergasia2 {
     public delegate void WinHandler();
 
     class Pic: PictureBox {
-        Bitmap topImage = new Bitmap(@"..\..\jinx\top.jpg");
+        Bitmap topImage = new Bitmap(@"..\..\Pics\top.jpg");
 
         public Pic() : base() {
             BackColor = Color.Black;
@@ -62,7 +62,7 @@ namespace AAEergasia2 {
             string[] filenames = new string[N * M / 2];
             for(int i = 0;i < filenames.Length; i++)
             {
-                filenames[i] = @"..\..\jinx\"+i+".png";
+                filenames[i] = @"..\..\Pics\"+i+".jpg";
             }
             loadImages(filenames);
         }

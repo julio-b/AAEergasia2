@@ -37,7 +37,7 @@
             // 
             this.nameTextBox.Enabled = false;
             this.nameTextBox.ForeColor = System.Drawing.Color.DarkGray;
-            this.nameTextBox.Location = new System.Drawing.Point(13, 13);
+            this.nameTextBox.Location = new System.Drawing.Point(13, 11);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(153, 20);
             this.nameTextBox.TabIndex = 1;
@@ -48,7 +48,7 @@
             // insertScoreBtn
             // 
             this.insertScoreBtn.Enabled = false;
-            this.insertScoreBtn.Location = new System.Drawing.Point(172, 10);
+            this.insertScoreBtn.Location = new System.Drawing.Point(172, 9);
             this.insertScoreBtn.Name = "insertScoreBtn";
             this.insertScoreBtn.Size = new System.Drawing.Size(75, 23);
             this.insertScoreBtn.TabIndex = 2;
@@ -72,10 +72,12 @@
             this._name,
             this._score,
             this._time});
-            this.dataGridView1.Location = new System.Drawing.Point(13, 40);
+            this.dataGridView1.Location = new System.Drawing.Point(13, 38);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(349, 294);
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(349, 296);
             this.dataGridView1.TabIndex = 3;
             // 
             // _name
@@ -98,7 +100,7 @@
             // 
             // refresh
             // 
-            this.refresh.Location = new System.Drawing.Point(253, 11);
+            this.refresh.Location = new System.Drawing.Point(253, 9);
             this.refresh.Name = "refresh";
             this.refresh.Size = new System.Drawing.Size(75, 23);
             this.refresh.TabIndex = 4;

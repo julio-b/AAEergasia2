@@ -76,6 +76,8 @@ namespace AAEergasia2 {
             LClicks.Text = "0";
             LTime.Text = "00:00";
             timer.Tag = false;
+            if (timer.Enabled) timer.Stop();
+            label3.Visible = true;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
