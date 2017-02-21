@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 
 namespace AAEergasia2 {
-
     public class Highscores {
+        
         private SQLiteConnection con;
         private string filename = "..\\..\\Externals\\Highscores.sqldb";
 
